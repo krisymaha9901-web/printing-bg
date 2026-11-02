@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printing.bg - Вашата идея. Нашият печат.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0d0e12;
+            --card-bg: #16181e;
+            --accent-orange: #ff6600;
+            --accent-glow: #ff8800;
+            --text-light: #ffffff;
+            --text-gray: #a0a5b5;
+            --border-color: #262933;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(13, 14, 18, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: 0.3s;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a.active, .nav-links a:hover {
+            background-color: rgba(255, 102, 0, 0.15);
+            color: var(--accent-orange);
+            border: 1px solid var(--accent-orange);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .social-icons a {
+            color: var(--text-gray);
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 60px 5%;
+            align-items: center;
+            gap: 40px;
+            background: radial-gradient(circle at 90% 10%, rgba(255, 102, 0, 0.08) 0%, transparent 60%);
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent-orange);
+        }
+
+        .hero-text p {
+            color: var(--text-gray);
+            font-size: 16px;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(45deg, var(--accent-orange), var(--accent-glow));
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(255, 102, 0, 0.4);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 102, 0, 0.6);
+        }
+
+        .hero-banner {
+            position: relative;
+            background: #12141a;
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 350px;
+        }
+
+        /* Features Bar */
+        .features-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 30px 5%;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-item i {
+            font-size: 28px;
+            color: var(--accent-orange);
+        }
+
+        .feature-item h4 {
+            font-size: 16px;
+        }
+
+        .feature-item p {
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 60px 5%;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background-color: var(--accent-orange);
+            border-radius: 2px;
+        }
+
+        .view-all {
+            color: var(--accent-orange);
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent-orange);
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 160px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+
+        }
+
+        .product-card .arrow-btn {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .product-card:hover .arrow-btn {
+            background-color: var(--accent-orange);
+            border-color: var(--accent-orange);
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            margin: 40px 5% 80px 5%;
+            background: linear-gradient(90deg, #16181e 0%, #251810 100%);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 102, 0, 0.3);
+        }
+
+        .cta-text h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .cta-text p {
+            color: var(--text-gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .features-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .cta-banner {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-cube" style="color: var(--accent-orange);"></i>
+            Printing<span>.bg</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#" class="active"><i class="fa-solid fa-house"></i> Начало</a></li>
+            <li><a href="#"><i class="fa-solid fa-cart-shopping"></i> Магазин</a></li>
+            <li><a href="#"><i class="fa-solid fa-pen-ruler"></i> Персонални поръчки</a></li>
+            <li><a href="#"><i class="fa-solid fa-images"></i> Галерия</a></li>
+            <li><a href="#"><i class="fa-solid fa-envelope"></i> Контакти</a></li>
+        </ul>
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <p style="color: var(--accent-orange); font-weight: bold; letter-spacing: 2px; margin-bottom: 10px;">3D PRINTING</p>
+            <h1>Printing<span>.bg</span></h1>
+            <h2>Вашата <span>идея</span>. Нашият печат.</h2>
+            <p>Качествен 3D печат, уникални модели и персонализирани решения – създадени с внимание към детайла!</p>
+            <a href="#contact" class="btn-primary">
+                <i class="fa-solid fa-paper-plane"></i> Изпрати запитване
+            </a>
+        </div>
+        <div class="hero-banner">
+            <i class="fa-solid fa-cubes" style="font-size: 120px; color: var(--accent-orange); opacity: 0.8;"></i>
+        </div>
+    </section>
+
+    <!-- Features Bar -->
+    <section class="features-bar">
+        <div class="feature-item">
+            <i class="fa-solid fa-gem"></i>
+            <div>
+                <h4>Високо качество</h4>
+                <p>При всеки проект</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-bolt"></i>
+            <div>
+                <h4>Бързо изпълнение</h4>
+                <p>Възможно най-скоро</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-gears"></i>
+            <div>
+                <h4>Персонализирани поръчки</h4>
+                <p>Според вашите идеи</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-handshake"></i>
+            <div>
+                <h4>Доверие</h4>
+                <p>От нашите клиенти</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="section-header">
+            <h2 class="section-title">Нашите продукти</h2>
+            <a href="#" class="view-all">Разгледайте целия магазин <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <i class="fa-solid fa-dragon" style="font-size: 60px; color: var(--text-gray); margin: 30px 0;"></i>
+                <h3>Фигурки & Аксесоари</h3>
+                <a href="#" class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="product-card">
+                <i class="fa-solid fa-key" style="font-size: 60px; color: var(--text-gray); margin: 30px 0;"></i>
+                <h3>Ключодържатели</h3>
+                <a href="#" class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="product-card">
+                <i class="fa-solid fa-mobile-screen" style="font-size: 60px; color: var(--text-gray); margin: 30px 0;"></i>
+                <h3>Стойки & Държачи</h3>
+                <a href="#" class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="product-card">
+                <i class="fa-solid fa-gamepad" style="font-size: 60px; color: var(--text-gray); margin: 30px 0;"></i>
+                <h3>Рекламни Табели</h3>
+                <a href="#" class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="product-card">
+                <i class="fa-solid fa-box" style="font-size: 60px; color: var(--text-gray); margin: 30px 0;"></i>
+                <h3>Полезни Изделия</h3>
+                <a href="#" class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="product-card">
+                <i class="fa-solid fa-gift" style="font-size: 60px; color: var(--text-gray); margin: 30px 0;"></i>
+                <h3>Персонални Поръчки</h3>
+                <a href="#" class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner" id="contact">
+        <div class="cta-text">
+            <h2>Имате идея? Ние я превръщаме в реалност!</h2>
+            <p>Свържете се с нас чрез сайта и ни разкажете какво желаете.</p>
+        </div>
+        <a href="mailto:contact@printing.bg" class="btn-primary">
+            <i class="fa-solid fa-envelope"></i> Изпрати запитване
+        </a>
+    </section>
+
+</body>
+</html>
